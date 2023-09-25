@@ -65,7 +65,7 @@ class BankController {
      * @return
      */
     @GetMapping("/getCustomerTransactionDetails/{id}")
-    public ResponseEntity<List<String>> returnTransferHistory(@PathVariable("id") Long id) {
+    public ResponseEntity<List<String>> returnTransferHistory(@PathVariable Long id) {
         List<String> res = new ArrayList<String>();
         try {
 
@@ -101,7 +101,7 @@ class BankController {
      * @return
      */
     @GetMapping("/getCustomerBalances/{id}")
-    public ResponseEntity<List<String>> getCustomerBalancesById(@PathVariable("id") Long id) {
+    public ResponseEntity<List<String>> getCustomerBalancesById(@PathVariable Long id) {
         List<String> res = new ArrayList<String>();
         try {
             if (checkValidCustomer(id)) {

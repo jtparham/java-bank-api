@@ -45,9 +45,9 @@ class DemoApplicationTests {
 	@Autowired
 	TransactionRepository transactionRepository;
 
-	// Confirm all balances a given account
-	@Test
-	public void testGetAllBalances() {
+    // Confirm all balances a given account
+    @Test
+    void testGetAllBalances() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -68,9 +68,9 @@ class DemoApplicationTests {
 
 	}
 
-	// This creates a new bank account for Branden Gibson
-	@Test
-	public void testCreateBankAccountWithInitialDeposit() {
+    // This creates a new bank account for Branden Gibson
+    @Test
+    void testCreateBankAccountWithInitialDeposit() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -96,9 +96,9 @@ class DemoApplicationTests {
 		assertEquals(expectedResult, bankAccountRepository.getBalances(Long.valueOf(2)));
 	}
 
-	// Checks if a customer exists when getting transactionDetails
-	@Test
-	public void testBadCustomerIdForTransactionDetails() {
+    // Checks if a customer exists when getting transactionDetails
+    @Test
+    void testBadCustomerIdForTransactionDetails() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -115,9 +115,9 @@ class DemoApplicationTests {
 		assertEquals("[\"Invalid customer id\"]", response.getBody().toString());
 	}
 
-	// Confirms that no details are returned for a valid customer
-	@Test
-	public void testNoTransactionDetailsForValidCustomer() {
+    // Confirms that no details are returned for a valid customer
+    @Test
+    void testNoTransactionDetailsForValidCustomer() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -132,9 +132,9 @@ class DemoApplicationTests {
 		assertEquals("[\"No transactions found\"]", response.getBody().toString());
 	}
 
-	// confirms that no account is created for invalid customer id
-	@Test
-	public void testCreateBankAccountForInvalidCustomer() {
+    // confirms that no account is created for invalid customer id
+    @Test
+    void testCreateBankAccountForInvalidCustomer() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -145,9 +145,9 @@ class DemoApplicationTests {
 		assertEquals("[\"Invalid customer id\"]", response.getBody().toString());
 	}
 
-	// confirms that no account is created for invalid deposit
-	@Test
-	public void testCreateBankAccountForInvalidDeposit() {
+    // confirms that no account is created for invalid deposit
+    @Test
+    void testCreateBankAccountForInvalidDeposit() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -158,9 +158,9 @@ class DemoApplicationTests {
 		assertEquals("[\"Initial deposit be a number and equal or greater than zero\"]", response.getBody().toString());
 	}
 
-	// confirms that no transfer occurs for invalid senderId
-	@Test
-	public void testTransferToInvalidSenderId() {
+    // confirms that no transfer occurs for invalid senderId
+    @Test
+    void testTransferToInvalidSenderId() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -188,9 +188,9 @@ class DemoApplicationTests {
 		assertEquals("[\"Invalid sender id\"]", transferResponse.getBody().toString());
 	}
 
-	// confirms that no account is created for invalid senderId
-	@Test
-	public void testTransferToInvalidReceiverId() {
+    // confirms that no account is created for invalid senderId
+    @Test
+    void testTransferToInvalidReceiverId() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -220,9 +220,9 @@ class DemoApplicationTests {
 		assertEquals("[\"Invalid receiver id\"]", transferResponse.getBody().toString());
 	}
 
-	// confirms that transfer denied for a sender without a matching account number
-	@Test
-	public void testTransferToInvalidSenderBankAccountId() {
+    // confirms that transfer denied for a sender without a matching account number
+    @Test
+    void testTransferToInvalidSenderBankAccountId() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -252,10 +252,10 @@ class DemoApplicationTests {
 		assertEquals("[\"Sender does not have an account with that id\"]", transferResponse.getBody().toString());
 	}
 
-	// confirms that transfer denied for a sender without a matching account
-	// number
-	@Test
-	public void testTransferToInvalidReceiverBankAccountId() {
+    // confirms that transfer denied for a sender without a matching account
+    // number
+    @Test
+    void testTransferToInvalidReceiverBankAccountId() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -285,10 +285,10 @@ class DemoApplicationTests {
 		assertEquals("[\"Receiver does not have an account with that id\"]", transferResponse.getBody().toString());
 	}
 
-	// confirms that transfer denied for a receiver without a matching account
-	// number
-	@Test
-	public void testTransferFromAccountNotOwnedByReceiver() {
+    // confirms that transfer denied for a receiver without a matching account
+    // number
+    @Test
+    void testTransferFromAccountNotOwnedByReceiver() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -319,10 +319,10 @@ class DemoApplicationTests {
 				transferResponse.getBody().toString());
 	}
 
-	// confirms that transfer denied for a receiver without a matching account
-	// number
-	@Test
-	public void testTransferFromAccountNotOwnedBySender() {
+    // confirms that transfer denied for a receiver without a matching account
+    // number
+    @Test
+    void testTransferFromAccountNotOwnedBySender() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -353,9 +353,9 @@ class DemoApplicationTests {
 				transferResponse.getBody().toString());
 	}
 
-	// This checks the expected loaded transaction list for a customer
-	@Test
-	public void testGetTransactionDetails() {
+    // This checks the expected loaded transaction list for a customer
+    @Test
+    void testGetTransactionDetails() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
@@ -371,16 +371,16 @@ class DemoApplicationTests {
 		assertEquals("[\"FROM Georgina Hazel 20 TO Arisha Barron\"]", response.getBody().toString());
 	}
 
-	/*
-	 * This test is for an exchange of 20 between Judah and Georgina.
-	 * The expected output is that both Judah and Georgina will have
-	 * a balance at the end of the transaction that reflects the
-	 * amount moved between them. There should also be a record
-	 * of the transaction between the two of them in their
-	 * transaction details list.
-	 */
-	@Test
-	public void testTansferBetweenAccountsAndTransactionRecord() {
+    /*
+     * This test is for an exchange of 20 between Judah and Georgina.
+     * The expected output is that both Judah and Georgina will have
+     * a balance at the end of the transaction that reflects the
+     * amount moved between them. There should also be a record
+     * of the transaction between the two of them in their
+     * transaction details list.
+     */
+    @Test
+    void testTansferBetweenAccountsAndTransactionRecord() {
 		// make sure the repos loaded.
 		assertNotNull(customerRepository);
 		assertNotNull(bankAccountRepository);
